@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "DropdownIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<SPS_Web_22S1.student>
+<h2>DropdownIndex</h2>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '../students/index',
+            type: 'get',
+            success: function (result) {
+                console.log(result);
+                $('#studentListTableDiv').html(result);
+            }
+        });
+
+        //$('#searchConditionForm').submit(function () {
+        //        url: '../students/index',
+
+        //})
+    })
+
+
+    function validateSearch() {
+
+        if ($('#studentNameSearchInput').val() == "" && $("#studentIDsearchInput").val() == "") {
+            alert("Please Enter Student name or Student ID for searching", "Data Required");
+            return;
+        }
+    }
+  
+
+</script>
+
+<form id="searchConditionForm" action="" onsubmit="return validateSearch()">
+Seacrch By Student name
+<input id="studentNameSearchInput" name="studentName" type="text" />
+<br>
+Or
+<br>
+
+Search By Student ID
+<input id="studentIDsearchInput" name="studentID" type="text" />
+<input id="searchConditionSubmit" type="submit" value="Search">
+</form>
+<br>
+<br>
+<br>
+
+<form>
+
+
+    <div id="studentListTableDiv">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GivenName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GivenName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })*@
+                        @Html.RadioButton("SelectedStudent", new { id = item.StudentID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <br><br>
+    <br>
+    <br>
+    <input class="btn" type="submit" value="Proceed" margin="5" />
+</form>
