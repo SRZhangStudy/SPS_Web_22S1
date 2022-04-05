@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -9,20 +10,41 @@ using System.Web.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SPS_Web_22S1;
 
+
 namespace SPS_Web_22S1.Controllers
 {
     public class studentsController : Controller
     {
         private db_tafesaspsEntities db = new db_tafesaspsEntities();
 
+        // Initial Page get list
+        
         public ActionResult DropdownIndex()
         {
             return View(db.students.ToList());
         }
 
+        //Search button refresh table
+        [HttpPost]
+        public ActionResult SearchStudent(string studentName, string studentID)
+        {
+            List<student> students = new List<student>();
+            if(studentName == null)
+            {
+                students.Add(db.students.Find(studentID));
+            }
+            else if(studentID == null)
+            {
+                studentName = "%" + studentName + "%";
+                students = db.students.SqlQuery("select * from student WHERE GivenName LIKE @name OR LastName LIKE @name", new SqlParameter("@name", studentName)).ToList<student>();
+            }
+            return RedirectToAction("Index");
+        }
+
         // GET: students
         public ActionResult Index()
         {
+
             return View(db.students.ToList());
         }
 

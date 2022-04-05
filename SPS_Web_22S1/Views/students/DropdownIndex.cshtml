@@ -8,6 +8,7 @@
 <h2>DropdownIndex</h2>
 
 <script type="text/javascript">
+
     $(document).ready(function () {
         $.ajax({
             url: '../students/index',
@@ -18,25 +19,33 @@
             }
         });
 
-        //$('#searchConditionForm').submit(function () {
-        //        url: '../students/index',
 
-        //})
-    })
+        $('#searchConditionSubmit').click(function () {
+            if ($('#studentNameSearchInput').val() == "" && $("#studentIDsearchInput").val() == "") {
+                alert("Please Enter Student name or Student ID for searching", "Data Required");
+                return;
+            }
+            //alert("working here");
+            studentName = $('#studentNameSearchInput').val();
+            studentID = $('#studentIDSearchInput').val();
+            $.ajax({
+                url: '@Url.Action("SearchStudent")',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    studentName: studentName,
+                    studentID: studentID
+                }
+            });
 
+        });
+    });
 
-    function validateSearch() {
-
-        if ($('#studentNameSearchInput').val() == "" && $("#studentIDsearchInput").val() == "") {
-            alert("Please Enter Student name or Student ID for searching", "Data Required");
-            return;
-        }
-    }
   
 
 </script>
 
-<form id="searchConditionForm" action="" onsubmit="return validateSearch()">
+
 Seacrch By Student name
 <input id="studentNameSearchInput" name="studentName" type="text" />
 <br>
@@ -45,8 +54,8 @@ Or
 
 Search By Student ID
 <input id="studentIDsearchInput" name="studentID" type="text" />
-<input id="searchConditionSubmit" type="submit" value="Search">
-</form>
+<button id="searchConditionSubmit" class="btn" type="button">Search</button>
+
 <br>
 <br>
 <br>
