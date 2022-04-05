@@ -14,31 +14,49 @@
             url: '../students/index',
             type: 'get',
             success: function (result) {
-                console.log(result);
                 $('#studentListTableDiv').html(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
             }
         });
 
 
         $('#searchConditionSubmit').click(function () {
-            if ($('#studentNameSearchInput').val() == "" && $("#studentIDsearchInput").val() == "") {
-                alert("Please Enter Student name or Student ID for searching", "Data Required");
+            if ($('#studentNameSearchInput').val() == "" && $("#studentIDSearchInput").val() == "") {
+                alert("Please Enter Student name or Student ID for searching");
                 return;
             }
-            //alert("working here");
             studentName = $('#studentNameSearchInput').val();
             studentID = $('#studentIDSearchInput').val();
             $.ajax({
                 url: '@Url.Action("SearchStudent")',
                 type: 'post',
-                dataType: 'json',
+                dataType: 'text',
                 data: {
                     studentName: studentName,
                     studentID: studentID
+                },
+                success: function (result) {
+                    //console.log("sucess");
+                    //console.log(result);
+                    $('#studentListTableDiv').empty();
+                    $('#studentListTableDiv').html(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
                 }
             });
-
         });
+
+        $('#proceedBtn').click(function () {
+
+            selectedStudentID = $("input:radio[name='SelectedStudent']:checked").val();
+            alert(selectedStudentID);
+        });
+
     });
 
   
@@ -46,22 +64,19 @@
 </script>
 
 
-Seacrch By Student name
+<b>Search By Student name</b>
 <input id="studentNameSearchInput" name="studentName" type="text" />
 <br>
-Or
+<b><i>Or</i></b>
 <br>
 
-Search By Student ID
-<input id="studentIDsearchInput" name="studentID" type="text" />
+<b>Search By Student ID</b>
+<input id="studentIDSearchInput" name="studentID" type="text" />
 <button id="searchConditionSubmit" class="btn" type="button">Search</button>
 
 <br>
 <br>
 <br>
-
-<form>
-
 
     <div id="studentListTableDiv">
         <table class="table">
@@ -104,5 +119,5 @@ Search By Student ID
     <br><br>
     <br>
     <br>
-    <input class="btn" type="submit" value="Proceed" margin="5" />
-</form>
+    <button id="proceedBtn" class="btn" type="submit" margin="5" >Proceed</button>
+

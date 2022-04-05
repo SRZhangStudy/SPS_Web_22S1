@@ -388,6 +388,7 @@
     <Content Include="Views\students\Edit.cshtml" />
     <Content Include="Views\students\Index.cshtml" />
     <Content Include="Views\students\DropdownIndex.cshtml" />
+    <Content Include="Views\students\SearchStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

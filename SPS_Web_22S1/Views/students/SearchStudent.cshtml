@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<SPS_Web_22S1.student>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SearchResult";
 }
 
 @*<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 <table class="table">
     <tr>
         <th>
@@ -26,7 +26,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.StudentID)
@@ -47,7 +48,7 @@
         @Html.RadioButton("SelectedStudent", new { id = item.StudentID })
     </td>
 </tr>
-}
+    }
 
 </table>
 

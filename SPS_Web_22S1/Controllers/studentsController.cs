@@ -29,16 +29,16 @@ namespace SPS_Web_22S1.Controllers
         public ActionResult SearchStudent(string studentName, string studentID)
         {
             List<student> students = new List<student>();
-            if(studentName == null)
+            if(studentName == "")
             {
                 students.Add(db.students.Find(studentID));
             }
-            else if(studentID == null)
+            else if(studentID == "")
             {
                 studentName = "%" + studentName + "%";
                 students = db.students.SqlQuery("select * from student WHERE GivenName LIKE @name OR LastName LIKE @name", new SqlParameter("@name", studentName)).ToList<student>();
             }
-            return RedirectToAction("Index");
+            return View(students.ToList());
         }
 
         // GET: students
