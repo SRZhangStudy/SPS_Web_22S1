@@ -15,7 +15,7 @@ namespace SPS_Web_22S1.Controllers
 {
     public class studentsController : Controller
     {
-        private db_tafesaspsEntities db = new db_tafesaspsEntities();
+        private db_tafesaspsEntities1 db = new db_tafesaspsEntities1();
 
         // Initial Page get list
         
@@ -38,7 +38,10 @@ namespace SPS_Web_22S1.Controllers
                 studentName = "%" + studentName + "%";
                 students = db.students.SqlQuery("select * from student WHERE GivenName LIKE @name OR LastName LIKE @name", new SqlParameter("@name", studentName)).ToList<student>();
             }
+
             return View(students.ToList());
+           
+
         }
 
         // GET: students

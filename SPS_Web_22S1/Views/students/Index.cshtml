@@ -23,7 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.EmailAddress)
         </th>
-        <th></th>
+        <th>Select</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -42,9 +42,14 @@
     </td>
     <td>
         @*@Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })*@
-        @Html.RadioButton("SelectedStudent", new { id = item.StudentID })
+        @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })*@
+        @{
+            if (item != null)
+            {
+                @Html.RadioButton("item.StudentID", item.StudentID)
+            }
+        }
     </td>
 </tr>
 }

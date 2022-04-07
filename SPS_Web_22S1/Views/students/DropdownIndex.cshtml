@@ -53,13 +53,19 @@
 
         $('#proceedBtn').click(function () {
 
-            selectedStudentID = $("input:radio[name='SelectedStudent']:checked").val();
+            selectedStudentID = $("input:radio[name='item.StudentID']:checked").val();
             alert(selectedStudentID);
+        });
+
+        $('#resetBtn').click(function () {
+            $('#studentNameSearchInput').val("");
+            $('#studentIDSearchInput').val("");
+            location.reload();
         });
 
     });
 
-  
+
 
 </script>
 
@@ -73,6 +79,7 @@
 <b>Search By Student ID</b>
 <input id="studentIDSearchInput" name="studentID" type="text" />
 <button id="searchConditionSubmit" class="btn" type="button">Search</button>
+<button id="resetBtn" class="btn">Reset</button>
 
 <br>
 <br>
@@ -90,7 +97,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.EmailAddress)
                 </th>
-                <th></th>
+                <th>Select</th>
             </tr>
 
             @foreach (var item in Model)
@@ -107,9 +114,14 @@
                     </td>
                     <td>
                         @*@Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })*@
-                        @Html.RadioButton("SelectedStudent", new { id = item.StudentID })
+        @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })*@
+                        @{
+                            if (item != null)
+                            {
+                                @Html.RadioButton("item.StudentID", item.StudentID)
+                            }
+                        }
                     </td>
                 </tr>
             }

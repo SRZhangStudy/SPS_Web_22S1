@@ -11,29 +11,24 @@ namespace SPS_Web_22S1
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
-    public partial class student
+    
+    public partial class competency
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public student()
+        public competency()
         {
-            this.student_grade = new HashSet<student_grade>();
-            this.student_studyplan = new HashSet<student_studyplan>();
+            this.crn_detail = new HashSet<crn_detail>();
+            this.subjects = new HashSet<subject>();
         }
-
-        [DisplayName("Student ID")]
-        public string StudentID { get; set; }
-        [DisplayName("Given Name")]
-        public string GivenName { get; set; }
-        [DisplayName("Last Name")]
-        public string LastName { get; set; }
-        [DisplayName("Email")]
-        public string EmailAddress { get; set; }
+    
+        public string TafeCompCode { get; set; }
+        public string NationalCompCode { get; set; }
+        public string CompetencyName { get; set; }
+        public int Hours { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_grade> student_grade { get; set; }
+        public virtual ICollection<crn_detail> crn_detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_studyplan> student_studyplan { get; set; }
+        public virtual ICollection<subject> subjects { get; set; }
     }
 }
