@@ -16,7 +16,7 @@ namespace SPS_Web_22S1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "students", action = "DropdownIndex", id = UrlParameter.Optional }
             );
         }
     }

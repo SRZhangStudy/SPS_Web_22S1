@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "DropdownIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<SPS_Web_22S1.student>
+<h2>DropdownIndex</h2>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $.ajax({
+            url: '../students/index',
+            type: 'get',
+            success: function (result) {
+                $('#studentListTableDiv').html(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        });
+
+
+        $('#searchConditionSubmit').click(function () {
+            if ($('#studentNameSearchInput').val() == "" && $("#studentIDSearchInput").val() == "") {
+                alert("Please Enter Student name or Student ID for searching");
+                return;
+            }
+            studentName = $('#studentNameSearchInput').val();
+            studentID = $('#studentIDSearchInput').val();
+            $.ajax({
+                url: '@Url.Action("SearchStudent")',
+                type: 'post',
+                dataType: 'text',
+                data: {
+                    studentName: studentName,
+                    studentID: studentID
+                },
+                success: function (result) {
+                    //console.log("sucess");
+                    //console.log(result);
+                    $('#studentListTableDiv').empty();
+                    $('#studentListTableDiv').html(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            });
+        });
+
+        $('#proceedBtn').click(function () {
+
+            selectedStudentID = $("input:radio[name='item.StudentID']:checked").val();
+            alert(selectedStudentID);
+        });
+
+        $('#resetBtn').click(function () {
+            $('#studentNameSearchInput').val("");
+            $('#studentIDSearchInput').val("");
+            location.reload();
+        });
+
+    });
+
+
+
+</script>
+
+
+<b>Search By Student name</b>
+<input id="studentNameSearchInput" name="studentName" type="text" />
+<br>
+<b><i>Or</i></b>
+<br>
+
+<b>Search By Student ID</b>
+<input id="studentIDSearchInput" name="studentID" type="text" />
+<button id="searchConditionSubmit" class="btn" type="button">Search</button>
+<button id="resetBtn" class="btn">Reset</button>
+
+<br>
+<br>
+<br>
+
+    <div id="studentListTableDiv">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GivenName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+                <th>Select</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GivenName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })*@
+                        @{
+                            if (item != null)
+                            {
+                                @Html.RadioButton("item.StudentID", item.StudentID)
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <br><br>
+    <br>
+    <br>
+    <button id="proceedBtn" class="btn" type="submit" margin="5" >Proceed</button>
+
