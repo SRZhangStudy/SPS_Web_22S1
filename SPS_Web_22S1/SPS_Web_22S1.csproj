@@ -376,9 +376,6 @@
     <Compile Include="subject_qualification.cs">
       <DependentUpon>SPS_Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>SPS_Entities.tt</DependentUpon>
-    </Compile>
     <Compile Include="term_datetime.cs">
       <DependentUpon>SPS_Entities.tt</DependentUpon>
     </Compile>

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\zhang\5WORK Project\SPS_Web_22S1\SPS_Web_22S1\SPS_Entities.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\miva1\OneDrive - TAFE SA\2022 Semester 1\5WORK\SPS_Web_22S1\SPS_Web_22S1\SPS_Entities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

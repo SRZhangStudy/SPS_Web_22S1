@@ -43,12 +43,13 @@ footer {
     margin-bottom: 0px;
 }
 
-/*#tafelogo {
-    height: 70px;
+#tafelogo {
+    height: 110px;
     padding: 20px;
-}*/
+}
 
 .footertext {
     color: white;
     padding-left: 10px;
+    padding-top: 15px;
 }

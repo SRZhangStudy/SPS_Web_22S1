@@ -42,7 +42,6 @@ namespace SPS_Web_22S1
         public virtual DbSet<studyplan_subject> studyplan_subject { get; set; }
         public virtual DbSet<subject> subjects { get; set; }
         public virtual DbSet<subject_qualification> subject_qualification { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<term_datetime> term_datetime { get; set; }
     }
 }

@@ -11,8 +11,7 @@ namespace SPS_Web_22S1
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,14 +20,10 @@ namespace SPS_Web_22S1
             this.student_grade = new HashSet<student_grade>();
             this.student_studyplan = new HashSet<student_studyplan>();
         }
-
-        [DisplayName("Student ID")]
+    
         public string StudentID { get; set; }
-        [DisplayName("Given Name")]
         public string GivenName { get; set; }
-        [DisplayName("Last Name")]
         public string LastName { get; set; }
-        [DisplayName("Email")]
         public string EmailAddress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
