@@ -53,3 +53,7 @@ footer {
     padding-left: 10px;
     padding-top: 15px;
 }
+
+#item_studentID:checked{
+    color: #be2029;
+}
