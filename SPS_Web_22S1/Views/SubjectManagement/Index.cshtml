@@ -1,0 +1,144 @@
+﻿@model SPS_Web_22S1.student
+
+@{
+    ViewBag.Title = ViewBag.Student.GivenName + ViewBag.Student.LastName + "'s Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="../css/motherstyles.css" />
+<link rel="stylesheet" type="text/css" href="../css/tablestyles.css" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        alert($("#QualCode").val());
+        //$("#SubjectDiv").load("/SubjectManagement/ListSubjects/?QualCode=" + $("#QualCode").val());
+        loadSubjects();
+    });
+    function loadSubjects() {
+
+        $.ajax({
+                url: "/SubjectManagement/ListSubjects/",
+                type: 'get',
+                dataType: 'text',
+                data: {
+                    QualCode: $("#QualCode").val(),
+                    studentID: @ViewBag.Student.StudentID
+                },
+                success: function (result) {
+                    //console.log("sucess");
+                    //console.log(result);
+                    $('#SubjectDiv').html(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            });
+        alert("working here");
+    }
+
+
+    //$(document).ready(function () {
+    //    alert("working");
+    //    $("#QualCode").change{
+    //        $(".form").submit();
+    //    }
+    //    //$("#SubjectDiv").load("/SubjectManagement/ListSubjects #QualCode");
+    //    alert($("#QualCode").val());
+    //    $("#SubjectDiv").html("/SubjectManagement/ListSubjects/?QualCode=" + $("#QualCode").val());
+    // })
+</script>
+
+<div class="row">
+    <container class="studentinfo">
+        @using (Ajax.BeginForm("DetailsByQualCode", "SubjectManagement", new AjaxOptions { HttpMethod = "Get" }))
+        {
+            <table class="table">
+                <tr>
+                    <th>Student Name:</th>
+                    <td>@ViewBag.Student.GivenName @ViewBag.Student.LastName</td>
+                    <th>Student ID</th>
+                    <td>@ViewBag.Student.StudentID</td>
+                    <th>Student Email</th>
+                    <td>
+                        @ViewBag.Student.EmailAddress
+                    </td>
+                </tr>
+                <tr>
+                    <th>Plan</th>
+                    <td>@Html.DropDownList("QualCode", new SelectList(ViewBag.StudyPlanList, "Value", "Text"), new { StudentID = ViewBag.Student.StudentID })</td>
+                    <th>Qualification</th>
+                    <td>@ViewBag.Qualification.QualName</td>
+                    <th>Enrolment Type</th>
+                    <td>@ViewBag.StudentStudyPlan.EnrolmentType</td>
+                </tr>
+                <tr>
+                    <th>TAFE Code</th>
+                    <td>@ViewBag.Qualification.TafeQualCode</td>
+                    <th>National Code</th>
+                    <td>@ViewBag.Qualification.NationalQualCode</td>
+                    <th>Year Start</th>
+                    <td>@ViewBag.StudentStudyPlan.TermYearStart</td>
+                </tr>
+            </table>
+        }
+    </container>
+    @*<container class="classestable">
+            
+                <span class="inputspan">
+                    <label for="crninput" id="crninputlabel">Input CRN</label>
+                    <input type="text" name="crninput" id="crninput" />
+                    <input type="button" name="addclass" value="Add Class" id="addclassbutton" class="inputbuttons" />
+                </span><br /><br />
+        <div id="SubjectDiv">
+                <table class="table">
+                    <tr>
+                        <th>CRN</th>>
+                        <td>Location</td>
+                        <td>National Code and Competancies</td>
+                        <td>TAFE Class ID</td>
+                        <td>Student Progress</td>
+                        <td class="seemoresetwidth">&nbsp;</td>
+                    </tr>
+                    <tr class="firstrow">
+                        <td>10778</td>
+                        <td>EXT</td>
+                        <td>ITCDMT501 - Incorporate and edit digital video</td>
+                        <td>5DVE</td>
+                        <td>Not Completed</td>
+                        <td class="seemore">See More</td>
+                    </tr>
+                    <tr class="secondrow">
+                        <td>10778</td>
+                        <td>EXT</td>
+                        <td>ITCDMT501 - Incorporate and edit digital video</td>
+                        <td>5DVE</td>
+                        <td>Not Completed</td>
+                        <td class="seemore">See More</td>
+                    </tr>
+                    <tr class="firstrow">
+                        <td>10778</td>
+                        <td>EXT</td>
+                        <td>ITCDMT501 - Incorporate and edit digital video</td>
+                        <td>5DVE</td>
+                        <td>Not Completed</td>
+                        <td class="seemore">See More</td>
+                    </tr>
+                    <tr class="secondrow">
+                        <td>10778</td>
+                        <td>EXT</td>
+                        <td>ITCDMT501 - Incorporate and edit digital video</td>
+                        <td>5DVE</td>
+                        <td>Not Completed</td>
+                        <td class="seemore">See More</td>
+                    </tr>
+                </table>
+                <span class="inputspan" id="emailsavebuttons">
+                    <input type="submit" value="Save" id="savebutton" class="inputbuttons">
+                    <input type="button" value="Email to *Student Name*" id="emailbutton" class="inputbuttons">
+                </span><br /><br />
+
+          
+        </div>
+    </container>*@
+<div id="SubjectDiv">
+    </div>
+</div>
