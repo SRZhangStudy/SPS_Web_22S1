@@ -51,4 +51,28 @@ footer {
 .footertext {
     color: white;
     padding-left: 10px;
+<<<<<<< Updated upstream
+=======
+    padding-top: 15px;
+}
+
+.studentsearch {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.searchbuttons {
+    background-color: #be2029;
+    color: white;
+    transition: 500ms ease-in-out;
+}
+
+.searchbuttons:hover {
+    background-color: #ee2731;
+    color: white;
+}
+
+.searchbuttons:focus{
+    color:white;
+>>>>>>> Stashed changes
 }
