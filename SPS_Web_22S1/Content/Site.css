@@ -43,17 +43,36 @@ footer {
     margin-bottom: 0px;
 }
 
-#tafelogo {
-    height: 110px;
+/*#tafelogo {
+    height: 70px;
     padding: 20px;
-}
+}*/
 
 .footertext {
     color: white;
     padding-left: 10px;
+<<<<<<< Updated upstream
+=======
     padding-top: 15px;
 }
 
-#item_studentID:checked{
-    color: #be2029;
+.studentsearch {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.searchbuttons {
+    background-color: #be2029;
+    color: white;
+    transition: 500ms ease-in-out;
+}
+
+.searchbuttons:hover {
+    background-color: #ee2731;
+    color: white;
+}
+
+.searchbuttons:focus{
+    color:white;
+>>>>>>> Stashed changes
 }
