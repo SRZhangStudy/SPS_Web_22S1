@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="81b3d0aa245141ba823d26ed44d239ea" Name="Diagram1">
+      <Diagram DiagramId="ff8f257bb2174b458f8016764565bac5" Name="Diagram1">
         <EntityTypeShape EntityType="db_tafesaspsModel.campu" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.competency" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.competency_qualification" Width="1.5" PointX="10" PointY="1.75" IsExpanded="true" />
@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="db_tafesaspsModel.studyplan_subject" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.subject" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.subject_qualification" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_tafesaspsModel.sysdiagram" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.term_datetime" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
         <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_CampusCode" ManuallyRouted="false" />
         <AssociationConnector Association="db_tafesaspsModel.FK_Session_CampusCode" ManuallyRouted="false" />

@@ -186,16 +186,6 @@
           <Property Name="SubjectCode" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="UsageType" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="term_datetime">
           <Key>
             <PropertyRef Name="TermCode" />
@@ -533,7 +523,6 @@ warning 6035: The relationship 'fk_competency_qualification_competency1' has col
           <EntitySet Name="subject" EntityType="Self.subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subject_competency" EntityType="Self.subject_competency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subject_qualification" EntityType="Self.subject_qualification" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="term_datetime" EntityType="Self.term_datetime" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_competency_qualification_competency_type1" Association="Self.fk_competency_qualification_competency_type1">
             <End Role="competency_type" EntitySet="competency_type" />
@@ -852,16 +841,6 @@ warning 6035: The relationship 'fk_competency_qualification_competency1' has col
           <NavigationProperty Name="qualification" Relationship="Self.FK_SubjQual_QualCode" FromRole="subject_qualification" ToRole="qualification" />
           <NavigationProperty Name="subject" Relationship="Self.FK_SubjQual_SubjectCode" FromRole="subject_qualification" ToRole="subject" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="term_datetime">
           <Key>
             <PropertyRef Name="TermCode" />
@@ -1179,7 +1158,6 @@ warning 6035: The relationship 'fk_competency_qualification_competency1' has col
           <EntitySet Name="studyplan_subject" EntityType="Self.studyplan_subject" />
           <EntitySet Name="subjects" EntityType="Self.subject" />
           <EntitySet Name="subject_qualification" EntityType="Self.subject_qualification" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="term_datetime" EntityType="Self.term_datetime" />
           <AssociationSet Name="FK_CRNDetail_CampusCode" Association="Self.FK_CRNDetail_CampusCode">
             <End Role="campus" EntitySet="campus" />
@@ -1456,17 +1434,6 @@ warning 6035: The relationship 'fk_competency_qualification_competency1' has col
                 <ScalarProperty Name="QualCode" ColumnName="QualCode" />
                 <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
                 <ScalarProperty Name="UsageType" ColumnName="UsageType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="db_tafesaspsModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
