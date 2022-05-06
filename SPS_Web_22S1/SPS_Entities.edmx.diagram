@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ff8f257bb2174b458f8016764565bac5" Name="Diagram1">
-        <EntityTypeShape EntityType="db_tafesaspsModel.campu" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+      <Diagram DiagramId="81b3d0aa245141ba823d26ed44d239ea" Name="Diagram1">
+        <EntityTypeShape EntityType="db_tafesaspsModel.campu" Width="1.75" PointX="3" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.competency" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.competency_qualification" Width="1.5" PointX="10" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.competency_type" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
@@ -17,11 +17,12 @@
         <EntityTypeShape EntityType="db_tafesaspsModel.qualification" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.student" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.student_grade" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_tafesaspsModel.student_studyplan" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_tafesaspsModel.studyplan_qualification" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.student_studyplan" Width="1.75" PointX="10.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.studyplan_qualification" Width="2" PointX="0.5" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.studyplan_subject" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.subject" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_tafesaspsModel.subject_qualification" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.subject_qualification" Width="1.75" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.sysdiagram" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tafesaspsModel.term_datetime" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
         <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_CampusCode" ManuallyRouted="false" />
         <AssociationConnector Association="db_tafesaspsModel.FK_Session_CampusCode" ManuallyRouted="false" />

@@ -317,6 +317,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\studentsController.cs" />
+    <Compile Include="Controllers\SubjectManagementController.cs" />
     <Compile Include="crn_detail.cs">
       <DependentUpon>SPS_Entities.tt</DependentUpon>
     </Compile>
@@ -385,6 +386,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\motherstyles.css" />
+    <Content Include="Content\tablestyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -440,6 +443,8 @@
     <Content Include="SPS_Entities.edmx.diagram">
       <DependentUpon>SPS_Entities.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\SubjectManagement\Index.cshtml" />
+    <Content Include="Views\SubjectManagement\ListSubjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

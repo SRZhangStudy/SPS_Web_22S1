@@ -55,6 +55,9 @@
 
             selectedStudentID = $("input:radio[name='item.StudentID']:checked").val();
             alert(selectedStudentID);
+            if (selectedStudentID != null) {
+                $(location).attr("href", "/SubjectManagement/Index/?studentID=" + selectedStudentID);
+            }
         });
 
         $('#resetBtn').click(function () {
