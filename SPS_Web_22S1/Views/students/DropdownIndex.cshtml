@@ -5,7 +5,7 @@
 }
 
 @model IEnumerable<SPS_Web_22S1.student>
-<h2>DropdownIndex</h2>
+<h1 class="display-4">Search Student</h1>
 
 <script type="text/javascript">
 
@@ -54,9 +54,12 @@
         $('#proceedBtn').click(function () {
 
             selectedStudentID = $("input:radio[name='item.StudentID']:checked").val();
-            alert(selectedStudentID);
+            //alert(selectedStudentID);
+
             if (selectedStudentID != null) {
                 $(location).attr("href", "/SubjectManagement/Index/?studentID=" + selectedStudentID);
+            } else {
+                alert( "Please select a student to proceed" );
             }
         });
 
