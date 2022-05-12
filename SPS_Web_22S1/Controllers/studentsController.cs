@@ -15,7 +15,7 @@ namespace SPS_Web_22S1.Controllers
 {
     public class studentsController : Controller
     {
-        private db_tafesaspsEntities1 db = new db_tafesaspsEntities1();
+        private db_tafesaspsEntities db = new db_tafesaspsEntities();
 
         // Initial Page get list
         

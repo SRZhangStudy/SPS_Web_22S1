@@ -9,7 +9,7 @@ namespace SPS_Web_22S1.Controllers
 {
     public class SubjectManagementController : Controller
     {
-        private db_tafesaspsEntities1 db = new db_tafesaspsEntities1();
+        private db_tafesaspsEntities db = new db_tafesaspsEntities();
         // GET: SubjectManagement
         public ActionResult Index(string studentID)
         {
@@ -49,100 +49,64 @@ namespace SPS_Web_22S1.Controllers
 
         public ActionResult ListSubjects(string QualCode, string StudentID)
         {
-            var sub_qual = db.subject_qualification.Where(sq=>sq.QualCode == QualCode).ToList();
+            // find all subjects in studyplan
+            var qual = db.qualifications.Where(q=>q.QualCode == QualCode).FirstOrDefault();
+            var studyplan = db.studyplan_qualification.FirstOrDefault();
+            var subjectList = studyplan.studyplan_subject.ToList();
+            var subjects_list_in_studyplan = subjectList.Select(sp=>sp.subject).ToList();
 
-            List<subject_qualification> sub_list = sub_qual.ToList<subject_qualification>();
-            List<string> sub_code_list = new List<string>();
-            foreach (subject_qualification sq in sub_list)
-            {
-                sub_code_list.Add(sq.SubjectCode);
-            }
+            // find the subjects that have grades - passed subjects and attempted subjects
+            var student_grade_list = db.student_grade.Where(s => s.StudentID == "000896534").ToList();
+            var passed_CRN_list = student_grade_list.Where(sg=>sg.Grade=="PA").Select(sg => sg.crn_detail).ToList();
+            var attempted_CRN_list = student_grade_list.Where(sg => sg.Grade != "PA").Select(sg => sg.crn_detail).ToList();
 
-            var subject_records = from cd in db.crn_detail join s in db.subjects on cd.SubjectCode equals s.SubjectCode 
-                                  where sub_code_list.Contains(s.SubjectCode) 
-                                  select new {s, cd };
+            var attempted_subject_code_list = attempted_CRN_list.Select(crn=>crn.SubjectCode).ToList();
+            var passed_subject_code_list = passed_CRN_list.Select(crn=>crn.SubjectCode).ToList();
 
-            var attempted_subject_records = from s in db.subjects
-                                   join cd in db.crn_detail on s.SubjectCode equals cd.SubjectCode
-                                   where sub_code_list.Contains(s.SubjectCode)
-                                   join g in db.student_grade on cd.CRN equals g.CRN
-                                   select new { s, cd, g };
-            List<string> competedSubjectCodes = attempted_subject_records.Select(s => s.s.SubjectCode).ToList();
+            var attempted_subject_list = db.subjects.Where(sb => attempted_subject_code_list.Contains(sb.SubjectCode));
+            var passed_subject_list = db.subjects.Where(sb => passed_subject_code_list.Contains(sb.SubjectCode));
 
-            var un_attempted_subject_records1 = from s in db.subjects
-                                   join cd in db.crn_detail on s.SubjectCode equals cd.SubjectCode
-                                   where sub_code_list.Contains(s.SubjectCode) && !competedSubjectCodes.Contains(s.SubjectCode)
-                                   join g in db.student_grade on cd.CRN equals g.CRN into cd_s_g
-                                   from g in cd_s_g.DefaultIfEmpty()
-                                   select new { s, cd, g };
 
-            var unattempted_subject_records = from s in db.subjects
-                                              join cd in db.crn_detail on s.SubjectCode equals cd.SubjectCode
-                                              where sub_code_list.Contains(s.SubjectCode) 
-                                              join g in db.student_grade on cd.CRN equals g.CRN into cd_s_g
-                                              from g in cd_s_g.DefaultIfEmpty()
-                                              select new { s, cd, g };
-
+            // return the lists to View
             List<dynamic> li = new List<dynamic>();
-            foreach (var item in attempted_subject_records.ToList())
+            List<dynamic> passedList = new List<dynamic>();
+            List<dynamic> attemptedList = new List<dynamic>();
+            List<dynamic> unattemptedList = new List<dynamic>();
+            foreach (var item in passed_subject_list)
             {
                 dynamic d = new ExpandoObject();
-                    d.Subject = item.s;
-                    d.CRNDetails = item.cd;
-                    d.Campus = item.cd.campu;
-                    d.TermDateTime = item.cd.term_datetime;
+                d.Subject = item;
+                d.Grade = passed_CRN_list.Where(cr => cr.SubjectCode == item.SubjectCode).Select(cr=>cr.student_grade);
+                d.CRN = passed_CRN_list.Where(cr => cr.SubjectCode == item.SubjectCode).FirstOrDefault();
+                d.Competency = item.competencies;
 
-                if (item.cd.lecturer != null)
-                {
-                    d.Lecture = item.cd.lecturer;
-                }
-                else
-                {
-                    d.Lecture = "";
-                }
-                var studentGrade = item.cd.student_grade;
-                    if (studentGrade.Count != 0)
-                    {
-                        d.StudentGrade = studentGrade.FirstOrDefault().Grade;
-                        d.StudentGradeDate = studentGrade.FirstOrDefault().GradeDate;
-                    }
-                    else
-                    {
-                        d.StudentGrade = "";
-                        d.StudentGradeDate = "";
-                    }
-                    li.Add(d);       
+                passedList.Add(d);
             }
-            foreach (var item in un_attempted_subject_records1.ToList())
+            foreach (var item in attempted_subject_list)
             {
                 dynamic d = new ExpandoObject();
-                d.Subject = item.s;
-                d.CRNDetails = item.cd;
-                d.Campus = item.cd.campu;
-                d.TermDateTime = item.cd.term_datetime;
-                if(item.cd.lecturer != null)
+                d.Subject = item;
+                d.Grade = attempted_CRN_list.Where(cr => cr.SubjectCode == item.SubjectCode).Select(cr => cr.student_grade);
+                d.CRN = passed_CRN_list.Where(cr => cr.SubjectCode == item.SubjectCode).FirstOrDefault();
+                d.Competency = item.competencies;
+                attemptedList.Add(d);
+            }
+            foreach (var item in attempted_subject_list)
+            {
+                if ( !passed_subject_code_list.Contains(item.SubjectCode))
                 {
-                    d.Lecture = item.cd.lecturer;
+                    dynamic d = new ExpandoObject();
+                    d.Subject = item;
+                    d.CRNList = item.crn_detail.ToList();
+                    unattemptedList.Add(d);
                 }
-                else
-                {
-                    d.Lecture = "";
-                }
-                var studentGrade = item.cd.student_grade;
-                if (studentGrade.Count != 0)
-                {
-                    d.StudentGrade = studentGrade.FirstOrDefault().Grade;
-                    d.StudentGradeDate = studentGrade.FirstOrDefault().GradeDate;
-                }
-                else
-                {
-                    d.StudentGrade = "";
-                    d.StudentGradeDate = "";
-                }
-                li.Add(d);
             }
 
-            return View(li);
+            ViewBag.PassedList = passedList;
+            ViewBag.AttemptedList = attemptedList;
+            ViewBag.UnattemptedList = unattemptedList;
+
+            return View();
         }
 
     }

@@ -2,47 +2,46 @@
 
 <table class="table">
     <tr>
-        <th>CRN</th>
-        <th>Subject Code </th>
-        <th>Subject Description</th>
-        <th>Term Year Start</th>
-        <th>Lecture </th>
+        <th>Subjects Comleted</th>
+    </tr>
+    <tr>
+        <th>Subject Code</th>
+        <th>Tafe Competency Code</th>
+        <th>National Competency Code</th>
+        <th>Competency Name</th>
+        <th>Finished Term</th>
         <th>Grade</th>
         <th>Grade Date</th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in ViewBag.PassedList)
     {
     if(item != null){
+            
 <tr>
-    <td>
-        @item.CRNDetails.CRN
-    </td>
     <td>
         @item.Subject.SubjectCode
     </td>
     <td>
-        @item.Subject.SubjectDescription
+        @item.CRN.TafeCompCode
     </td>
     <td>
-        @item.CRNDetails.TermYearStart <text>S</text>@item.CRNDetails.TermCodeStart
-    </td>
-        @if(@item.Lecture != null)
-        {
-    <td>
-                        @item.Lecture.GivenName @item.Lecture.LastName 
-    </td>
-        }
-
-    <td>
-         @item.StudentGrade
+        @item.Competency.NationalCompCode
     </td>
     <td>
-            @item.StudentGradeDate
+        @item.Competency.CompetencyName
+    </td>
+    <td>
+        @item.CRN.TermYearEnd <text>Term</text>@item.CRN.TermYearEnd
+    </td>
+    <td>
+        @item.StudentGrade
+    </td>
+    <td>
+        @item.StudentGradeDate
     </td>
 </tr>
     }
     }
-
 </table>
 
