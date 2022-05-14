@@ -5,7 +5,7 @@
 }
 
 @model IEnumerable<SPS_Web_22S1.Student>
-<h2>DropdownIndex</h2>
+<h1 class="display-4">Search Student</h1>
 
 <script type="text/javascript">
 
@@ -54,9 +54,12 @@
         $('#proceedBtn').click(function () {
 
             selectedStudentID = $("input:radio[name='item.StudentID']:checked").val();
-            alert(selectedStudentID);
+            //alert(selectedStudentID);
+
             if (selectedStudentID != null) {
                 $(location).attr("href", "/SubjectManagement/Index/?StudentID=" + selectedStudentID);
+            } else {
+                alert( "Please select a student to proceed" );
             }
         });
 
@@ -72,21 +75,15 @@
 
 </script>
 
-
-<b>Search By Student name</b>
-<input id="studentNameSearchInput" name="studentName" type="text" />
-<br>
-<b><i>Or</i></b>
-<br>
-
-<b>Search By Student ID</b>
-<input id="studentIDSearchInput" name="studentID" type="text" />
-<button id="searchConditionSubmit" class="btn" type="button">Search</button>
-<button id="resetBtn" class="btn">Reset</button>
-
-<br>
-<br>
-<br>
+<div class="studentsearch">
+    <b>Search By Student name</b>
+    <input id="studentNameSearchInput" name="studentName" type="text" />
+    <b><i>&nbsp; Or &nbsp;</i></b>
+    <b>Search By Student ID</b>
+    <input id="studentIDSearchInput" name="studentID" type="text" /> &nbsp;
+    <button id="searchConditionSubmit" class="searchbuttons btn" type="button">Search</button>
+    <button id="resetBtn" class="searchbuttons btn">Reset</button>
+</div>
 
     <div id="studentListTableDiv">
         <table class="table">
@@ -134,5 +131,5 @@
     <br><br>
     <br>
     <br>
-    <button id="proceedBtn" class="btn" type="submit" margin="5" >Proceed</button>
+    <button id="proceedBtn" class="searchbuttons btn" type="submit" margin="5" >Proceed</button>
 
