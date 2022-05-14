@@ -12,18 +12,18 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class competency_type
+    public partial class Competency_Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public competency_type()
+        public Competency_Type()
         {
-            this.competency_qualification = new HashSet<competency_qualification>();
+            this.Competency_Qualification = new HashSet<Competency_Qualification>();
         }
     
         public string CompTypeCode { get; set; }
         public string CompTypeDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<competency_qualification> competency_qualification { get; set; }
+        public virtual ICollection<Competency_Qualification> Competency_Qualification { get; set; }
     }
 }

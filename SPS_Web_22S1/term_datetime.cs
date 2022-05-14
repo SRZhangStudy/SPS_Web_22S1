@@ -12,15 +12,15 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class term_datetime
+    public partial class Term_Datetime
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public term_datetime()
+        public Term_Datetime()
         {
-            this.crn_detail = new HashSet<crn_detail>();
-            this.crn_session_timetable = new HashSet<crn_session_timetable>();
-            this.student_grade = new HashSet<student_grade>();
-            this.student_studyplan = new HashSet<student_studyplan>();
+            this.CRN_Detail = new HashSet<CRN_Detail>();
+            this.CRN_Session_Timetable = new HashSet<CRN_Session_Timetable>();
+            this.Student_Grade = new HashSet<Student_Grade>();
+            this.Student_Studyplan = new HashSet<Student_Studyplan>();
         }
     
         public int TermCode { get; set; }
@@ -30,12 +30,12 @@ namespace SPS_Web_22S1
         public int SemesterCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_detail> crn_detail { get; set; }
+        public virtual ICollection<CRN_Detail> CRN_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_session_timetable> crn_session_timetable { get; set; }
+        public virtual ICollection<CRN_Session_Timetable> CRN_Session_Timetable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_grade> student_grade { get; set; }
+        public virtual ICollection<Student_Grade> Student_Grade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_studyplan> student_studyplan { get; set; }
+        public virtual ICollection<Student_Studyplan> Student_Studyplan { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class competency
+    public partial class Competency
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public competency()
+        public Competency()
         {
-            this.crn_detail = new HashSet<crn_detail>();
-            this.subjects = new HashSet<subject>();
+            this.CRN_Detail = new HashSet<CRN_Detail>();
+            this.Subjects = new HashSet<Subject>();
         }
     
         public string TafeCompCode { get; set; }
@@ -27,8 +27,8 @@ namespace SPS_Web_22S1
         public int Hours { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_detail> crn_detail { get; set; }
+        public virtual ICollection<CRN_Detail> CRN_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<subject> subjects { get; set; }
+        public virtual ICollection<Subject> Subjects { get; set; }
     }
 }

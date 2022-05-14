@@ -12,12 +12,12 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class day_of_week
+    public partial class Day_Of_Week
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public day_of_week()
+        public Day_Of_Week()
         {
-            this.crn_session_timetable = new HashSet<crn_session_timetable>();
+            this.CRN_Session_Timetable = new HashSet<CRN_Session_Timetable>();
         }
     
         public int DayCode { get; set; }
@@ -25,6 +25,6 @@ namespace SPS_Web_22S1
         public string DayLongName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_session_timetable> crn_session_timetable { get; set; }
+        public virtual ICollection<CRN_Session_Timetable> CRN_Session_Timetable { get; set; }
     }
 }

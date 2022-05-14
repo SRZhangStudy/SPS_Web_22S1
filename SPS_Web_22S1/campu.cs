@@ -12,21 +12,21 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class campu
+    public partial class Campu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public campu()
+        public Campu()
         {
-            this.crn_detail = new HashSet<crn_detail>();
-            this.crn_session_timetable = new HashSet<crn_session_timetable>();
+            this.CRN_Detail = new HashSet<CRN_Detail>();
+            this.CRN_Session_Timetable = new HashSet<CRN_Session_Timetable>();
         }
     
         public string CampusCode { get; set; }
         public string CampusName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_detail> crn_detail { get; set; }
+        public virtual ICollection<CRN_Detail> CRN_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_session_timetable> crn_session_timetable { get; set; }
+        public virtual ICollection<CRN_Session_Timetable> CRN_Session_Timetable { get; set; }
     }
 }

@@ -4,14 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<SPS_Web_22S1.student>
+@model IEnumerable<SPS_Web_22S1.Student>
 <h2>DropdownIndex</h2>
 
 <script type="text/javascript">
 
     $(document).ready(function () {
         $.ajax({
-            url: '../students/index',
+            url: '../Students/index',
             type: 'get',
             success: function (result) {
                 $('#studentListTableDiv').html(result);
@@ -56,7 +56,7 @@
             selectedStudentID = $("input:radio[name='item.StudentID']:checked").val();
             alert(selectedStudentID);
             if (selectedStudentID != null) {
-                $(location).attr("href", "/SubjectManagement/Index/?studentID=" + selectedStudentID);
+                $(location).attr("href", "/SubjectManagement/Index/?StudentID=" + selectedStudentID);
             }
         });
 

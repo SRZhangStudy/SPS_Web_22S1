@@ -12,7 +12,7 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class student_studyplan
+    public partial class Student_Studyplan
     {
         public string StudentID { get; set; }
         public string QualCode { get; set; }
@@ -20,8 +20,8 @@ namespace SPS_Web_22S1
         public int TermYearStart { get; set; }
         public string EnrolmentType { get; set; }
     
-        public virtual qualification qualification { get; set; }
-        public virtual student student { get; set; }
-        public virtual term_datetime term_datetime { get; set; }
+        public virtual Qualification Qualification { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Term_Datetime Term_Datetime { get; set; }
     }
 }

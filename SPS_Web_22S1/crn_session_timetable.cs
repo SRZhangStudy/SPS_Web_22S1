@@ -12,7 +12,7 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class crn_session_timetable
+    public partial class CRN_Session_Timetable
     {
         public string CRN { get; set; }
         public int TermCodeStart { get; set; }
@@ -24,9 +24,9 @@ namespace SPS_Web_22S1
         public string Building { get; set; }
         public string CampusCode { get; set; }
     
-        public virtual campu campu { get; set; }
-        public virtual crn_detail crn_detail { get; set; }
-        public virtual day_of_week day_of_week { get; set; }
-        public virtual term_datetime term_datetime { get; set; }
+        public virtual Campu Campu { get; set; }
+        public virtual CRN_Detail CRN_Detail { get; set; }
+        public virtual Day_Of_Week Day_Of_Week { get; set; }
+        public virtual Term_Datetime Term_Datetime { get; set; }
     }
 }

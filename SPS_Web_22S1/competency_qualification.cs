@@ -12,12 +12,12 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class competency_qualification
+    public partial class Competency_Qualification
     {
         public string QualCode { get; set; }
         public string NationalCompCode { get; set; }
         public string CompTypeCode { get; set; }
     
-        public virtual competency_type competency_type { get; set; }
+        public virtual Competency_Type Competency_Type { get; set; }
     }
 }

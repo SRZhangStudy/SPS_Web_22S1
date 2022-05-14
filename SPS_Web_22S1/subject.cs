@@ -12,27 +12,27 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class subject
+    public partial class Subject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public subject()
+        public Subject()
         {
-            this.crn_detail = new HashSet<crn_detail>();
-            this.studyplan_subject = new HashSet<studyplan_subject>();
-            this.subject_qualification = new HashSet<subject_qualification>();
-            this.competencies = new HashSet<competency>();
+            this.CRN_Detail = new HashSet<CRN_Detail>();
+            this.Studyplan_Subject = new HashSet<Studyplan_Subject>();
+            this.Subject_Qualification = new HashSet<Subject_Qualification>();
+            this.Competencies = new HashSet<Competency>();
         }
     
         public string SubjectCode { get; set; }
         public string SubjectDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_detail> crn_detail { get; set; }
+        public virtual ICollection<CRN_Detail> CRN_Detail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<studyplan_subject> studyplan_subject { get; set; }
+        public virtual ICollection<Studyplan_Subject> Studyplan_Subject { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<subject_qualification> subject_qualification { get; set; }
+        public virtual ICollection<Subject_Qualification> Subject_Qualification { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<competency> competencies { get; set; }
+        public virtual ICollection<Competency> Competencies { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class department
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public department()
+        public Department()
         {
-            this.crn_detail = new HashSet<crn_detail>();
+            this.CRN_Detail = new HashSet<CRN_Detail>();
         }
     
         public string DepartmentCode { get; set; }
         public string Department1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_detail> crn_detail { get; set; }
+        public virtual ICollection<CRN_Detail> CRN_Detail { get; set; }
     }
 }

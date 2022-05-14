@@ -12,7 +12,7 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class student_grade
+    public partial class Student_Grade
     {
         public string StudentID { get; set; }
         public string CRN { get; set; }
@@ -22,8 +22,8 @@ namespace SPS_Web_22S1
         public string Grade { get; set; }
         public Nullable<System.DateTime> GradeDate { get; set; }
     
-        public virtual crn_detail crn_detail { get; set; }
-        public virtual student student { get; set; }
-        public virtual term_datetime term_datetime { get; set; }
+        public virtual CRN_Detail CRN_Detail { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Term_Datetime Term_Datetime { get; set; }
     }
 }

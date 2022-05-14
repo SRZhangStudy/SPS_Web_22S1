@@ -12,14 +12,14 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class qualification
+    public partial class Qualification
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public qualification()
+        public Qualification()
         {
-            this.student_studyplan = new HashSet<student_studyplan>();
-            this.studyplan_qualification = new HashSet<studyplan_qualification>();
-            this.subject_qualification = new HashSet<subject_qualification>();
+            this.Student_Studyplan = new HashSet<Student_Studyplan>();
+            this.Studyplan_Qualification = new HashSet<Studyplan_Qualification>();
+            this.Subject_Qualification = new HashSet<Subject_Qualification>();
         }
     
         public string QualCode { get; set; }
@@ -32,10 +32,10 @@ namespace SPS_Web_22S1
         public int ReqListedElectedUnits { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_studyplan> student_studyplan { get; set; }
+        public virtual ICollection<Student_Studyplan> Student_Studyplan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<studyplan_qualification> studyplan_qualification { get; set; }
+        public virtual ICollection<Studyplan_Qualification> Studyplan_Qualification { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<subject_qualification> subject_qualification { get; set; }
+        public virtual ICollection<Subject_Qualification> Subject_Qualification { get; set; }
     }
 }

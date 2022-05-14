@@ -9,34 +9,35 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SPS_Web_22S1;
+using SPS_Web_22S1.DAL;
 
 
 namespace SPS_Web_22S1.Controllers
 {
-    public class studentsController : Controller
+    public class StudentsController : Controller
     {
-        private db_tafesaspsEntities db = new db_tafesaspsEntities();
+        private db_tafesaspsEntities db = DBHelper.InitConnection();
 
         // Initial Page get list
-        
+
         public ActionResult DropdownIndex()
         {
-            return View(db.students.ToList());
+            return View(db.Students.ToList());
         }
 
         //Search button refresh table
         [HttpPost]
         public ActionResult SearchStudent(string studentName, string studentID)
         {
-            List<student> students = new List<student>();
+            List<Student> students = new List<Student>();
             if(studentName == "")
             {
-                students.Add(db.students.Find(studentID));
+                students.Add(db.Students.Find(studentID));
             }
             else if(studentID == "")
             {
                 studentName = "%" + studentName + "%";
-                students = db.students.SqlQuery("select * from student WHERE GivenName LIKE @name OR LastName LIKE @name", new SqlParameter("@name", studentName)).ToList<student>();
+                students = db.Students.SqlQuery("select * from student WHERE GivenName LIKE @name OR LastName LIKE @name", new SqlParameter("@name", studentName)).ToList<Student>();
             }
 
             return View(students.ToList());
@@ -48,7 +49,7 @@ namespace SPS_Web_22S1.Controllers
         public ActionResult Index()
         {
 
-            return View(db.students.ToList());
+            return View(db.Students.ToList());
         }
 
         // GET: students/Details/5
@@ -58,7 +59,7 @@ namespace SPS_Web_22S1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            student student = db.students.Find(id);
+            Student student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -77,11 +78,11 @@ namespace SPS_Web_22S1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentID,GivenName,LastName,EmailAddress")] student student)
+        public ActionResult Create([Bind(Include = "StudentID,GivenName,LastName,EmailAddress")] Student student)
         {
             if (ModelState.IsValid)
             {
-                db.students.Add(student);
+                db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -96,7 +97,7 @@ namespace SPS_Web_22S1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            student student = db.students.Find(id);
+            Student student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -109,7 +110,7 @@ namespace SPS_Web_22S1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentID,GivenName,LastName,EmailAddress")] student student)
+        public ActionResult Edit([Bind(Include = "StudentID,GivenName,LastName,EmailAddress")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -127,7 +128,7 @@ namespace SPS_Web_22S1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            student student = db.students.Find(id);
+            Student student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -140,8 +141,8 @@ namespace SPS_Web_22S1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            student student = db.students.Find(id);
-            db.students.Remove(student);
+            Student student = db.Students.Find(id);
+            db.Students.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -12,13 +12,13 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class student
+    public partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public student()
+        public Student()
         {
-            this.student_grade = new HashSet<student_grade>();
-            this.student_studyplan = new HashSet<student_studyplan>();
+            this.Student_Grade = new HashSet<Student_Grade>();
+            this.Student_Studyplan = new HashSet<Student_Studyplan>();
         }
     
         public string StudentID { get; set; }
@@ -27,8 +27,8 @@ namespace SPS_Web_22S1
         public string EmailAddress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_grade> student_grade { get; set; }
+        public virtual ICollection<Student_Grade> Student_Grade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_studyplan> student_studyplan { get; set; }
+        public virtual ICollection<Student_Studyplan> Student_Studyplan { get; set; }
     }
 }

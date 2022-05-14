@@ -12,14 +12,14 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class studyplan_subject
+    public partial class Studyplan_Subject
     {
         public string StudyPlanCode { get; set; }
         public string SubjectCode { get; set; }
         public int TimingSemester { get; set; }
         public int TimingSemesterTerm { get; set; }
     
-        public virtual studyplan_qualification studyplan_qualification { get; set; }
-        public virtual subject subject { get; set; }
+        public virtual Studyplan_Qualification Studyplan_Qualification { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

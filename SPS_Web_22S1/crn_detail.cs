@@ -12,13 +12,13 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class crn_detail
+    public partial class CRN_Detail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public crn_detail()
+        public CRN_Detail()
         {
-            this.crn_session_timetable = new HashSet<crn_session_timetable>();
-            this.student_grade = new HashSet<student_grade>();
+            this.CRN_Session_Timetable = new HashSet<CRN_Session_Timetable>();
+            this.Student_Grade = new HashSet<Student_Grade>();
         }
     
         public string CRN { get; set; }
@@ -34,15 +34,15 @@ namespace SPS_Web_22S1
         public System.DateTime FreezeDate { get; set; }
         public System.DateTime DateCreated { get; set; }
     
-        public virtual campu campu { get; set; }
-        public virtual competency competency { get; set; }
-        public virtual department department { get; set; }
-        public virtual lecturer lecturer { get; set; }
-        public virtual subject subject { get; set; }
-        public virtual term_datetime term_datetime { get; set; }
+        public virtual Campu Campu { get; set; }
+        public virtual Competency Competency { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual Lecturer Lecturer { get; set; }
+        public virtual Subject Subject { get; set; }
+        public virtual Term_Datetime Term_Datetime { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<crn_session_timetable> crn_session_timetable { get; set; }
+        public virtual ICollection<CRN_Session_Timetable> CRN_Session_Timetable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_grade> student_grade { get; set; }
+        public virtual ICollection<Student_Grade> Student_Grade { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class subject_qualification
+    public partial class Subject_Qualification
     {
         public string QualCode { get; set; }
         public string SubjectCode { get; set; }
         public string UsageType { get; set; }
     
-        public virtual qualification qualification { get; set; }
-        public virtual subject subject { get; set; }
+        public virtual Qualification Qualification { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

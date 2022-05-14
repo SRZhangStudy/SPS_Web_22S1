@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68e9d4ab16e84fb4a2e604861fd49e48" Name="Diagram1">
+        <EntityTypeShape EntityType="db_tafesaspsModel.Campu" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Competency" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Competency_Qualification" Width="1.5" PointX="10" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Competency_Type" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.CRN_Detail" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.CRN_Session_Timetable" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Day_Of_Week" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Department" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Lecturer" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Qualification" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Student" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Student_Grade" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Student_Studyplan" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Studyplan_Qualification" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Studyplan_Subject" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Subject" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Subject_Qualification" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_tafesaspsModel.Term_Datetime" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_CampusCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_Session_CampusCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_TafeCompCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.fk_Competency_Qualification_Competency_Type1" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_DepartmentCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_LecturerID" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_SubjectCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_CRNDetail_TermStart" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_Session_CRN" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudentGrade_CRN" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_Session_DayCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_Session_TermStart" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudentStudyplan_QualCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudyPlanQual_QualCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_SubjQual_QualCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudentGrade_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudentStudyplan_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudentGrade_TermStart" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudentStudyplan_TermStart" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudyPlanSubject_StudyPlanCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_StudyPlanSubject_SubjectCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.FK_SubjQual_SubjectCode" ManuallyRouted="false" />
+        <AssociationConnector Association="db_tafesaspsModel.Subject_Competency" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

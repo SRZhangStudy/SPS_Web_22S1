@@ -12,20 +12,20 @@ namespace SPS_Web_22S1
     using System;
     using System.Collections.Generic;
     
-    public partial class studyplan_qualification
+    public partial class Studyplan_Qualification
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public studyplan_qualification()
+        public Studyplan_Qualification()
         {
-            this.studyplan_subject = new HashSet<studyplan_subject>();
+            this.Studyplan_Subject = new HashSet<Studyplan_Subject>();
         }
     
         public string StudyPlanCode { get; set; }
         public string QualCode { get; set; }
         public int Priority { get; set; }
     
-        public virtual qualification qualification { get; set; }
+        public virtual Qualification Qualification { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<studyplan_subject> studyplan_subject { get; set; }
+        public virtual ICollection<Studyplan_Subject> Studyplan_Subject { get; set; }
     }
 }
