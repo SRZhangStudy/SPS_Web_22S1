@@ -11,7 +11,7 @@
 
     $(document).ready(function () {
         $.ajax({
-            url: '../Students/index',
+            url: '../students/index',
             type: 'get',
             success: function (result) {
                 $('#studentListTableDiv').html(result);
@@ -57,7 +57,7 @@
             //alert(selectedStudentID);
 
             if (selectedStudentID != null) {
-                $(location).attr("href", "/SubjectManagement/Index/?StudentID=" + selectedStudentID);
+                $(location).attr("href", "/SubjectManagement/Index/?studentID=" + selectedStudentID);
             } else {
                 alert( "Please select a student to proceed" );
             }
