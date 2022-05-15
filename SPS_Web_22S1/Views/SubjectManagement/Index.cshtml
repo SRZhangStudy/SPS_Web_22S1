@@ -1,7 +1,7 @@
-﻿@model SPS_Web_22S1.Student
+﻿@model SPS_Web_22S1.Models.StudentDetail
 
 @{
-    ViewBag.Title = ViewBag.Student.GivenName + ViewBag.Student.LastName + "'s Plan";
+    ViewBag.Title = Model.Student.GivenName + Model.Student.LastName + "'s Plan";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../css/motherstyles.css" />
@@ -21,7 +21,7 @@
                 dataType: 'text',
                 data: {
                     QualCode: $("#QualCode").val(),
-                    studentID: @ViewBag.Student.StudentID
+                    studentID: $("#StudentIDtd").text()
                 },
                 success: function (result) {
                     //console.log("sucess");
@@ -33,7 +33,8 @@
                     console.log(thrownError);
                 }
             });
-        //alert("working here");
+        //alert($("#StudentIDtd").text());
+
     }
 
 
@@ -50,96 +51,38 @@
 
 <div class="row">
     <container class="studentinfo">
-        @using (Ajax.BeginForm("DetailsByQualCode", "SubjectManagement", new AjaxOptions { HttpMethod = "Get" }))
+        @using (Ajax.BeginForm("Index", "SubjectManagement", new AjaxOptions { HttpMethod = "Get" }))
         {
             <table class="table">
                 <tr>
                     <th>Student Name:</th>
-                    <td>@ViewBag.Student.GivenName @ViewBag.Student.LastName</td>
+                    <td>@Model.Student.GivenName @Model.Student.LastName</td>
                     <th>Student ID</th>
-                    <td>@ViewBag.Student.StudentID</td>
+                    <td id="StudentIDtd">@Model.Student.StudentID</td>
                     <th>Student Email</th>
                     <td>
-                        @ViewBag.Student.EmailAddress
+                        @Model.Student.EmailAddress
                     </td>
                 </tr>
                 <tr>
                     <th>Plan</th>
-                    <td>@Html.DropDownList("QualCode", new SelectList(ViewBag.StudyPlanList, "Value", "Text"), new { StudentID = ViewBag.Student.StudentID })</td>
+                    <td>@Html.DropDownList("QualCode", new SelectList(Model.StudyPlanList, "QualCode", "QualCode"), new { StudentID = Model.Student.StudentID })</td>
                     <th>Qualification</th>
-                    <td>@ViewBag.Qualification.QualName</td>
+                    <td>@Model.Qualification.QualName</td>
                     <th>Enrolment Type</th>
-                    <td>@ViewBag.StudentStudyPlan.EnrolmentType</td>
+                    <td>@Model.StudyPlan.EnrolmentType</td>
                 </tr>
                 <tr>
                     <th>TAFE Code</th>
-                    <td>@ViewBag.Qualification.TafeQualCode</td>
+                    <td>@Model.Qualification.TafeQualCode</td>
                     <th>National Code</th>
-                    <td>@ViewBag.Qualification.NationalQualCode</td>
+                    <td>@Model.Qualification.NationalQualCode</td>
                     <th>Year Start</th>
-                    <td>@ViewBag.StudentStudyPlan.TermYearStart</td>
+                    <td>@Model.StudyPlan.TermYearStart</td>
                 </tr>
             </table>
         }
     </container>
-    @*<container class="classestable">
-            
-                <span class="inputspan">
-                    <label for="crninput" id="crninputlabel">Input CRN</label>
-                    <input type="text" name="crninput" id="crninput" />
-                    <input type="button" name="addclass" value="Add Class" id="addclassbutton" class="inputbuttons" />
-                </span><br /><br />
-        <div id="SubjectDiv">
-                <table class="table">
-                    <tr>
-                        <th>CRN</th>>
-                        <td>Location</td>
-                        <td>National Code and Competancies</td>
-                        <td>TAFE Class ID</td>
-                        <td>Student Progress</td>
-                        <td class="seemoresetwidth">&nbsp;</td>
-                    </tr>
-                    <tr class="firstrow">
-                        <td>10778</td>
-                        <td>EXT</td>
-                        <td>ITCDMT501 - Incorporate and edit digital video</td>
-                        <td>5DVE</td>
-                        <td>Not Completed</td>
-                        <td class="seemore">See More</td>
-                    </tr>
-                    <tr class="secondrow">
-                        <td>10778</td>
-                        <td>EXT</td>
-                        <td>ITCDMT501 - Incorporate and edit digital video</td>
-                        <td>5DVE</td>
-                        <td>Not Completed</td>
-                        <td class="seemore">See More</td>
-                    </tr>
-                    <tr class="firstrow">
-                        <td>10778</td>
-                        <td>EXT</td>
-                        <td>ITCDMT501 - Incorporate and edit digital video</td>
-                        <td>5DVE</td>
-                        <td>Not Completed</td>
-                        <td class="seemore">See More</td>
-                    </tr>
-                    <tr class="secondrow">
-                        <td>10778</td>
-                        <td>EXT</td>
-                        <td>ITCDMT501 - Incorporate and edit digital video</td>
-                        <td>5DVE</td>
-                        <td>Not Completed</td>
-                        <td class="seemore">See More</td>
-                    </tr>
-                </table>
-                <span class="inputspan" id="emailsavebuttons">
-                    <input type="submit" value="Save" id="savebutton" class="inputbuttons">
-                    <input type="button" value="Email to *Student Name*" id="emailbutton" class="inputbuttons">
-                </span><br /><br />
-
-          
-        </div>
-    </container>*@
 <div id="SubjectDiv">
-    </div>
+</div>
 </div>

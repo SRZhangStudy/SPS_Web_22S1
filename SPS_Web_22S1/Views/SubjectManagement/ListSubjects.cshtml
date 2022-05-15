@@ -1,4 +1,6 @@
-﻿
+﻿@using SPS_Web_22S1.Models
+@model Tuple<List<SubjectDetail>, List<SubjectDetail>, List<UnAttemptedSubject>>
+
 
 <table class="table">
     <tr>
@@ -14,34 +16,81 @@
         <th>Grade Date</th>
     </tr>
 
-    @foreach (var item in ViewBag.PassedList)
+    @foreach (var item in Model.Item1)
     {
-    if(item != null){
-            
-<tr>
-    <td>
-        @item.Subject.SubjectCode
-    </td>
-    <td>
-        @item.CRN.TafeCompCode
-    </td>
-    <td>
-        @item.Competency.NationalCompCode
-    </td>
-    <td>
-        @item.Competency.CompetencyName
-    </td>
-    <td>
-        @item.CRN.TermYearEnd <text>Term</text>@item.CRN.TermYearEnd
-    </td>
-    <td>
-        @item.StudentGrade
-    </td>
-    <td>
-        @item.StudentGradeDate
-    </td>
-</tr>
+        if (item != null)
+        {
+            <tr>
+                <td>
+                    @item.Subject.SubjectCode
+                </td>
+                <td>
+                    @item.Competency.TafeCompCode
+                </td>
+                <td>
+                    @item.Competency.NationalCompCode
+                </td>
+                <td>
+                    @item.Competency.CompetencyName
+                </td>
+                <td>
+                    @item.CRN_Detail.TermYearStart <text>Term</text>@item.CRN_Detail.TermCodeStart
+                </td>
+                <td>
+                    @item.Grade.Grade
+                </td>
+                <td>
+                    @if (@item.Grade.GradeDate.HasValue)
+                    {
+                        @Convert.ToDateTime(item.Grade.GradeDate).ToString("dd/MM/yyyy")
+                    }
+                </td>
+            </tr>
+        }
     }
+    @foreach (var item in Model.Item2)
+    {
+        if (item != null)
+        {
+            <tr>
+                <td>
+                    @item.Subject.SubjectCode
+                </td>
+                <td>
+                    @item.Competency.TafeCompCode
+                </td>
+                <td>
+                    @item.Competency.NationalCompCode
+                </td>
+                <td>
+                    @item.Competency.CompetencyName
+                </td>
+                <td>
+                    @item.CRN_Detail.TermYearStart <text>Term</text>@item.CRN_Detail.TermCodeStart
+                </td>
+                <td>
+                    @item.Grade.Grade
+                </td>
+                <td>
+                    @if (@item.Grade.GradeDate.HasValue)
+                    {
+                        @Convert.ToDateTime(item.Grade.GradeDate).ToString("dd/MM/yyyy")
+                    }
+                </td>
+            </tr>
+        }
+    }
+    @foreach (var item in Model.Item3)
+    {
+        if (item != null)
+        {
+            <tr>
+                <td>
+                    @item.Subject.SubjectCode
+                </td>
+
+            </tr>
+        }
     }
 </table>
 
