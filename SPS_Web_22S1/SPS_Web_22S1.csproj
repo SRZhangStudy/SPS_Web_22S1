@@ -444,7 +444,7 @@
     <Content Include="SPSEntities.edmx.diagram">
       <DependentUpon>SPSEntities.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\SubjectManagement\PassedSubjects.cshtml" />
+    <Content Include="Views\SubjectManagement\_SubjectSelectingListPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

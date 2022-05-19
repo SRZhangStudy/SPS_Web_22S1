@@ -10,7 +10,7 @@ namespace SPS_Web_22S1.Controllers
 {
     public class SubjectManagementController : Controller
     {
-        private db_tafesaspsEntities db = DBHelper.InitConnection();
+        private db_tafesaspsEntities db = DBHelper.db_instance;
         // GET: SubjectManagement
 
         public ActionResult Index(string studentID, string QualCode)
@@ -36,7 +36,6 @@ namespace SPS_Web_22S1.Controllers
 
         public ActionResult ListSubjects(string QualCode, string StudentID)
         {
-
             // find all subjects in studyplan
             var qual = db.Qualifications.Where(q => q.QualCode == QualCode).FirstOrDefault();
             var studyplan = qual.Studyplan_Qualification.FirstOrDefault();
@@ -71,16 +70,16 @@ namespace SPS_Web_22S1.Controllers
                 uas.Subject = item;
                 unattemptedList.Add(uas);
             }
-            var model = new Tuple <List<SubjectDetail>, List<SubjectDetail>, List<UnAttemptedSubject>>(passedList, attemptedList, unattemptedList);
+            var model = new Tuple <List<SubjectDetail>, List<SubjectDetail>>(passedList, attemptedList);
                 return View(model);
         }
 
-        //public PartialViewResult PassedSubjects(List<CRN_Detail> passedCRNList)
-        //{
-        //    var passed_subject_code_list = passedCRNList.Select(crn => crn.SubjectCode).ToList();
-        //    var passed_subject_list = db.Subjects.Where(sb => passed_subject_code_list.Contains(sb.SubjectCode));
-        //    return PartialView("_PassedSubjects", passed_subject_list);
-        //}
+        public PartialViewResult SubjectSelectingListPartialView(List<CRN_Detail> passedCRNList)
+        {
+            return PartialView();
+        }
+
+      
 
     }
 }

@@ -16,7 +16,7 @@ namespace SPS_Web_22S1.Controllers
 {
     public class StudentsController : Controller
     {
-        private db_tafesaspsEntities db = DBHelper.InitConnection();
+        private db_tafesaspsEntities db = DBHelper.db_instance;
 
         // Initial Page get list
 

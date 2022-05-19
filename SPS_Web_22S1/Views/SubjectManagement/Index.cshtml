@@ -4,8 +4,10 @@
     ViewBag.Title = Model.Student.GivenName + Model.Student.LastName + "'s Plan";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../css/motherstyles.css" />
-<link rel="stylesheet" type="text/css" href="../css/tablestyles.css" />
+
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 <h1 class="display-4">Student Details</h1>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -16,23 +18,23 @@
     function loadSubjects() {
 
         $.ajax({
-                url: "/SubjectManagement/ListSubjects/",
-                type: 'get',
-                dataType: 'text',
-                data: {
-                    QualCode: $("#QualCode").val(),
-                    studentID: $("#StudentIDtd").text()
-                },
-                success: function (result) {
-                    //console.log("sucess");
-                    //console.log(result);
-                    $('#SubjectDiv').html(result);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(thrownError);
-                }
-            });
+            url: "/SubjectManagement/ListSubjects/",
+            type: 'get',
+            dataType: 'text',
+            data: {
+                QualCode: $("#QualCode").val(),
+                studentID: $("#StudentIDtd").text()
+            },
+            success: function (result) {
+                //console.log("sucess");
+                //console.log(result);
+                $('#SubjectDiv').html(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        });
         //alert($("#StudentIDtd").text());
 
     }
@@ -83,6 +85,6 @@
             </table>
         }
     </container>
-<div id="SubjectDiv">
-</div>
+    <div id="SubjectDiv">
+    </div>
 </div>
