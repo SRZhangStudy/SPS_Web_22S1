@@ -15,6 +15,11 @@
         //$("#SubjectDiv").load("/SubjectManagement/ListSubjects/?QualCode=" + $("#QualCode").val());
         loadSubjects();
     });
+    $(document).ajaxSend(function () {
+        $("#loadingDiv").show();
+    }).ajaxComplete(function () {
+        $("#loadingDiv").hide();
+    });
     function loadSubjects() {
 
         $.ajax({
@@ -85,6 +90,9 @@
             </table>
         }
     </container>
+    <div id="loadingDiv" class="text-center">
+        <img id=""src="~/img/loading.gif" class="img-fluid" alt="loading" height="30" width="30">
+        </div>
     <div id="SubjectDiv">
     </div>
 </div>
