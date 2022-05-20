@@ -1,11 +1,94 @@
-﻿
-TODO
-TODO
-TODO
-TODO
-TODO
-TODO
-TODO
-TODO
-TODO
-TODO
+﻿@model List<SPS_Web_22S1.Models.UnAttemptedSubject>
+
+<table>
+    <thead>
+        <tr>
+            <th>Subject </th>
+            <th>Subject Description</th>
+            <th>Competency Code</th>
+            <th>Competency Name</th>
+            <th>Tafe Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int rowNo = 1;
+
+            foreach (var item in Model)
+            {
+                if (item != null)
+                {
+
+                    <tr data-toggle="collapse" data-target="#record_@rowNo" role="button" class="accordion-toggle">
+                        <td>@item.Subject.SubjectCode</td>
+                        <td>@item.Subject.SubjectDescription</td>
+                        <td>@item.Competency.NationalCompCode</td>
+                        <td>@item.Competency.CompetencyName</td>
+                        <td>@item.Competency.TafeCompCode</td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse" id="record_@rowNo">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>CRN</th>
+                                            <th>Subject</th>
+                                            <th>Term Start</th>
+                                            <th>Session Time</th>
+                                            <th>Lecture</th>
+                                            <th>Campus</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (item.CRNSelectionItemList != null)
+                                        {
+                                            foreach (var childItem in item.CRNSelectionItemList)
+                                            {
+
+                                                foreach (var cs in childItem.CRNSessions)
+                                                {
+                                                    <tr>
+                                                        <td>@childItem.CRN_Detail.CRN</td>
+                                                        <td>@childItem.CRN_Detail.SubjectCode</td>
+                                                        <td>
+                                                            @childItem.CRN_Detail.TermYearStart
+                                                            @if (@childItem.CRN_Detail.TermCodeStart == 3)
+                                                            {
+                                                                <span>S2T1</span>
+                                                            }
+                                                            else if (@childItem.CRN_Detail.TermCodeStart == 4)
+                                                            {
+                                                                <span>S2T2</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>S1T</span>@childItem.CRN_Detail.TermCodeStart
+                                                            }
+                                                        </td>
+                                                        <td>@cs.StartTime <text> - </text>@cs.EndTime @cs.Day_Of_Week.DayShortName</td>
+                                                        <td>@childItem.CRN_Detail.Lecturer.GivenName @childItem.CRN_Detail.Lecturer.LastName</td>
+                                                        <td>@cs.Campu.CampusName</td>
+                                                    </tr>
+                                                }
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                    rowNo = rowNo + 1;
+                }
+            }
+        }
+
+    </tbody>
+</table>
+

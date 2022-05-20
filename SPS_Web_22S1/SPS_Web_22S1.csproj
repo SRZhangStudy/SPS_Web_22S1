@@ -337,6 +337,7 @@
     <Compile Include="Lecturer.cs">
       <DependentUpon>SPSEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CRNDayTime.cs" />
     <Compile Include="Models\CRNSelectionItem.cs" />
     <Compile Include="Models\StudentDetail.cs" />
     <Compile Include="Models\SubjectDetail.cs" />

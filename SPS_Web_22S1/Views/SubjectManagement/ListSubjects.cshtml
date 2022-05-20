@@ -1,7 +1,22 @@
 ﻿@using SPS_Web_22S1.Models
-@model Tuple<List<SubjectDetail>, List<SubjectDetail>>
+@model Tuple<List<SubjectDetail>, List<SubjectDetail>, List<UnAttemptedSubject>>
 
 
+@*<script>
+
+    $.ajax({
+        type: "POST",
+        url: '/SubjectManagement/SubjectSelectingListPartialView/',
+        contentType: "application/text; charset=utf-8",
+        dataType: "text",
+        async: false,
+        success: function (data) {
+            // Populate your container
+            $('#ViewHolder').html(data);
+        }
+    })
+
+</script>*@
 <div class="panel-group">
     <div class="panel panel-success">
         <div class="panel-heading">
@@ -118,12 +133,13 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div data-toggle="collapse" data-target="#selectingSubjectsDiv">
-                <h4 class="panel-title">Select Subjects </h4>
+                <h4 class="panel-title">Select Subjects: @Model.Item3.Count </h4>
             </div>
         </div>
         <div class="panel-collapse collapse" id="selectingSubjectsDiv">
-            <div class="panel-body">
-                @Html.Partial("_SubjectSelectingListPartialView");
+            <div id="ViewHolder" class="panel-body">
+                @{Html.RenderPartial("_SubjectSelectingListPartialView", Model.Item3);
+                }
             </div>
         </div>
     </div>
