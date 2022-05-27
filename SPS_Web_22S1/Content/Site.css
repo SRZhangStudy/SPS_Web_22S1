@@ -88,3 +88,25 @@ footer {
     padding: 5px;
     border-radius: 5px
 }
+.panel-heading{
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.panel-heading:hover{
+    filter: brightness(90%);
+}
+.accordion-toggle {
+    transition: 0.5s ease-in-out;
+}
+.accordion-toggle:hover{
+    filter: brightness(250%);
+}
+#QualCode {
+    background-color: #eeeeee;
+    border: solid black 2px;
+    border-radius: 3px;
+    padding: 5px;
+}
+#selectListTable td{
+    padding: 5px;
+}
