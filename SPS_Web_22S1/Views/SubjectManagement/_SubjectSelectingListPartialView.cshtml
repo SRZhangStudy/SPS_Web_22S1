@@ -67,7 +67,7 @@
                                                                 <span>S1T</span>@childItem.CRN_Detail.TermCodeStart
                                                             }
                                                         </td>
-                                                        <td>@cs.StartTime <text> - </text>@cs.EndTime @cs.Day_Of_Week.DayShortName</td>
+                                                        <td>@cs.StartTime.ToString("mm") <text>:</text>@cs.StartTime.ToString("ss")<text> - </text>@cs.EndTime.ToString("mm")<text>:</text>@cs.EndTime.ToString("ss") @cs.Day_Of_Week.DayShortName</td>
                                                         <td>@childItem.CRN_Detail.Lecturer.GivenName @childItem.CRN_Detail.Lecturer.LastName</td>
                                                         <td>@cs.Campu.CampusName</td>
                                                     </tr>
