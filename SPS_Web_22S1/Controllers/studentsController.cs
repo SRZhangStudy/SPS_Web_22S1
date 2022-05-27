@@ -40,7 +40,7 @@ namespace SPS_Web_22S1.Controllers
                 students = db.Students.SqlQuery("select * from student WHERE GivenName LIKE @name OR LastName LIKE @name", new SqlParameter("@name", studentName)).ToList<Student>();
             }
 
-            return View(students.ToList());
+            return View("Index",students.ToList());
 
 
         }
