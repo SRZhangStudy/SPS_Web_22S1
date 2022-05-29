@@ -36,8 +36,26 @@ namespace SPS_Web_22S1.Controllers
             }
             else if (studentID == "")
             {
-                studentName = "%" + studentName + "%";
-                students = db.Students.SqlQuery("select * from student WHERE GivenName LIKE @name OR LastName LIKE @name", new SqlParameter("@name", studentName)).ToList<Student>();
+                studentName = studentName.Trim();
+                if(studentName.Contains(" ")){
+                    char[] whitespace = new char[] { ' ','\t'};
+                    string[] nameSplit = studentName.Split(separator: whitespace);
+                    List<string> nameWithoutWhiteSpace = new List<string>();
+                    for(int i = 0; i < nameSplit.Length; i++)
+                    {
+                        if(nameSplit[i] != "" && nameSplit[i] != " " && nameSplit[i] != "\t")
+                        {
+                            nameWithoutWhiteSpace.Add(nameSplit[i]);
+                        }
+                    }
+                    string firstName = nameWithoutWhiteSpace[0];
+                    string lastName = nameWithoutWhiteSpace[1];
+                    students = db.Students.Where(st=> st.GivenName.Contains(firstName) || st.LastName.Contains(lastName) || st.GivenName.Contains(lastName) || st.LastName.Contains(firstName)).ToList();
+                }
+                else
+                {
+                    students = db.Students.Where(st=> st.GivenName.Contains(studentName) || st.LastName.Contains(studentName) ).ToList();
+                }
             }
 
             return View("Index",students.ToList());

@@ -21,12 +21,31 @@
             }
         });
 
+        
+
 
         $('#searchConditionSubmit').click(function () {
             if ($('#studentNameSearchInput').val() == "" && $("#studentIDSearchInput").val() == "") {
-                alert("Please Enter Student name or Student ID for searching");
+                $("#inputErrorSpan").html("Please Enter Student name or Student ID for searching");
                 return;
             }
+            if ($('#studentNameSearchInput').val() != "") {
+                var regSutdentName = /[a-zA-Z]/;
+                if (!regSutdentName.test($("#studentNameSearchInput").val())) {
+                    $("#inputErrorSpan").html("Student Name format invalid, letters only");
+                    $('#studentNameSearchInput').focus();
+                    return;
+                }
+            }
+            if ($('#studentIDSearchInput').val() != "") {
+                var regSutdentID = /\d{9}$/;
+                if (!regSutdentID.test($("#studentIDSearchInput").val())) {
+                    $("#inputErrorSpan").html("Student ID format invalid, 9 digits number only");
+                    $('#studentIDSearchInput').focus();
+                    return;
+                }
+            }
+
             studentName = $('#studentNameSearchInput').val();
             studentID = $('#studentIDSearchInput').text();
             $.ajax({
@@ -77,11 +96,15 @@
 <div class="studentsearch">
     <b>Search By Student name</b>
     <input id="studentNameSearchInput" name="studentName" type="text" />
+
     <b><i>&nbsp; Or &nbsp;</i></b>
     <b>Search By Student ID</b>
     <input id="studentIDSearchInput" name="studentID" type="text" /> &nbsp;
+
     <button id="searchConditionSubmit" class="searchbuttons btn" type="button">Search</button>
     <button id="resetBtn" class="searchbuttons btn">Reset</button>
+    <br>
+    <span id="inputErrorSpan" class="badge badge-danger"></span>
 </div>
 
 <div id="studentListTableDiv">
