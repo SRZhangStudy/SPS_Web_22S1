@@ -1,0 +1,55 @@
+ [TestMethod]
+        public void TestAddCRNSessionTable_ReturnListCountTrue()
+        {
+            //Arrange
+            _CRNDetails = new CRN_Detail
+            {
+                CRN = "001111",
+                TafeCompCode = "ADL",
+                TermCodeStart = 1,
+                TermYearStart = 2022,
+                TermCodeEnd = 1,
+                TermYearEnd = 2023,
+                SubjectCode = "5DD",
+                CampusCode = "ADL",
+                LecturerID = "001",
+                DepartmentCode = "003",
+                FreezeDate = DateTime.Now,
+                DateCreated = DateTime.Now
+            };
+            _CRNSelectionItem = new CRNSelectionItem(_CRNDetails);
+            CRN_Session_Timetable cst1 = new CRN_Session_Timetable
+            {
+                CRN = "001111",TermCodeStart = 01,TermYearStart = 2022,DayCode = 3,StartTime = new TimeSpan(2, 00, 0),
+                EndTime = new TimeSpan(4, 0, 0),Room = "B02",Building = "B",CampusCode = "ADL",
+            };
+            CRN_Session_Timetable cst2 = new CRN_Session_Timetable
+            {
+                CRN = "001111",TermCodeStart = 01,TermYearStart = 2022,DayCode = 3,StartTime = new TimeSpan(2, 00, 0),
+                EndTime = new TimeSpan(4, 0, 0),Room = "B02",Building = "B",CampusCode = "ADL",
+            };
+            CRN_Session_Timetable cst3 = new CRN_Session_Timetable
+            {
+                CRN = "001111",TermCodeStart = 01,TermYearStart = 2022,DayCode = 3,StartTime = new TimeSpan(2, 00, 0),
+                EndTime = new TimeSpan(4, 0, 0),Room = "B02",Building = "B",CampusCode = "ADL",
+            }; 
+            CRN_Session_Timetable cst4 = new CRN_Session_Timetable
+            {
+                CRN = "001111",TermCodeStart = 01,TermYearStart = 2022,DayCode = 3,StartTime = new TimeSpan(2, 00, 0),
+                EndTime = new TimeSpan(4, 0, 0),Room = "B02",Building = "B",CampusCode = "ADL",
+            };
+            CRN_Session_Timetable cst5 = new CRN_Session_Timetable
+            {
+                CRN = "001111",TermCodeStart = 01,TermYearStart = 2022,DayCode = 3,StartTime = new TimeSpan(2, 00, 0),
+                EndTime = new TimeSpan(4, 0, 0),Room = "B02",Building = "B",CampusCode = "ADL",
+            };
+            //Action
+            _CRNSelectionItem.AddCRNSession(cst1);
+            _CRNSelectionItem.AddCRNSession(cst2);
+            _CRNSelectionItem.AddCRNSession(cst3);
+            _CRNSelectionItem.AddCRNSession(cst4);
+            _CRNSelectionItem.AddCRNSession(cst5);
+
+            //Result
+            Assert.AreEqual(5, _CRNSelectionItem.CRNSessions.Count);
+        }

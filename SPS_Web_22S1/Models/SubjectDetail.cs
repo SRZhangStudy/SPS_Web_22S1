@@ -11,7 +11,5 @@ namespace SPS_Web_22S1.Models
         public CRN_Detail CRN_Detail { get; set; }
         public Student_Grade Grade{ get; set; }
         public Competency Competency { get; set; }
-
-
 }
 }

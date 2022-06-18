@@ -13,12 +13,12 @@ namespace SPS_Web_22S1.Controllers
         private db_tafesaspsEntities db = DBHelper.InitConnection();
         // GET: SubjectManagement
         private Student student;
-        private string qualCode;
+
         public ActionResult Index(string studentID, string QualCode)
         {
             StudentDetail sd = new StudentDetail();
             this.student = DBHelper.GetStudentByID(studentID);
-            this.qualCode = QualCode;
+
             sd.Student = student;
             sd.StudyPlanList = student.Student_Studyplan.ToList();
             if(QualCode == null)
@@ -50,11 +50,13 @@ namespace SPS_Web_22S1.Controllers
             List<SubjectDetail> attemptedList = new List<SubjectDetail>();
             foreach (var grade in student_grade_list)
             {
-                SubjectDetail sg = new SubjectDetail();
-                sg.Grade = grade;
-                sg.CRN_Detail = grade.CRN_Detail;
-                sg.Competency = grade.CRN_Detail.Competency;
-                sg.Subject = grade.CRN_Detail.Subject;
+                var sg = new SubjectDetail
+                {
+                    Grade = grade,
+                    CRN_Detail = grade.CRN_Detail,
+                    Competency = grade.CRN_Detail.Competency,
+                    Subject = grade.CRN_Detail.Subject
+                };
                 if (grade.Grade=="PA")
                 {
                     passedList.Add(sg);
@@ -68,22 +70,16 @@ namespace SPS_Web_22S1.Controllers
             List<UnAttemptedSubject> unattemptedList = new List<UnAttemptedSubject>();
             foreach (var item in unattemptedSubjectList)
             {
-                UnAttemptedSubject uas = new UnAttemptedSubject();
-                uas.Subject = item;
-                uas.Competency = item.Competencies.FirstOrDefault();
-                List<CRNSelectionItem> crnSelectList = new List<CRNSelectionItem>();
+                var uas = new UnAttemptedSubject(item,item.Competencies.FirstOrDefault());
                 foreach (var crnItem in item.CRN_Detail.ToList())
                 {
-                    CRNSelectionItem csi = new CRNSelectionItem();
-                    csi.CRN_Detail = crnItem;
-                    csi.CRNSessions = new List<CRN_Session_Timetable>();
-                    foreach(var cs in crnItem.CRN_Session_Timetable.ToList())
+                    CRNSelectionItem csi = new CRNSelectionItem(crnItem);
+                    foreach (var cs in crnItem.CRN_Session_Timetable.ToList())
                     {
-                        csi.CRNSessions.Add(cs);
+                        csi.AddCRNSession(cs);
                     }
-                    crnSelectList.Add(csi);
+                    uas.AddCRNSelectionItem(csi);
                 }
-                uas.CRNSelectionItemList = crnSelectList;
                 unattemptedList.Add(uas);
             }
             var model = new Tuple <List<SubjectDetail>, List<SubjectDetail>,List<UnAttemptedSubject>>(passedList, attemptedList, unattemptedList);

@@ -12,5 +12,6 @@ namespace SPS_Web_22S1.Models
         public Student_Studyplan StudyPlan { get; set; }
         public Qualification Qualification { set; get; }
         public Competency Competency { get; set; }
+
     }
 }

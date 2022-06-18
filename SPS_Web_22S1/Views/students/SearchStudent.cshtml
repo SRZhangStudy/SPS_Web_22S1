@@ -22,8 +22,6 @@
         });
 
         
-
-
         $('#searchConditionSubmit').click(function () {
             if ($('#studentNameSearchInput').val() == "" && $("#studentIDSearchInput").val() == "") {
                 $("#inputErrorSpan").html("Please Enter Student name or Student ID for searching");
@@ -47,7 +45,7 @@
             }
 
             studentName = $('#studentNameSearchInput').val();
-            studentID = $('#studentIDSearchInput').text();
+            studentID = $('#studentIDSearchInput').val();
             $.ajax({
                 url: '@Url.Action("SearchStudent")',
                 type: 'post',
